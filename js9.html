@@ -13,6 +13,19 @@
   <script type="text/javascript" src="js9support.min.js"></script>
   <script type="text/javascript" src="js9.min.js"></script>
   <script type="text/javascript" src="js9plugins.js"></script>
+  <script>
+        {% if jid %}
+        var js9id = "{{jid}}";
+        {% else %}
+        // get a random id
+        var js9id = self.crypto.randomUUID().substring(1, 5);
+        {% endif %}
+        // update JS9.DEFID before JS9 initializes
+        $(document).on("JS9:Start", () => {
+            JS9.DEFID = js9id;
+            console.log('Using JS9 ID: ' + js9id);
+        });
+  </script>
   <style type="text/css">
       #div {
           position: relative;
