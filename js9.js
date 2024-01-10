@@ -24516,6 +24516,7 @@ JS9.instantiatePlugin = function(el, plugin, winhandle, args){
 		JS9.error(`${plugin.name} is not dynamically selectable`);
 	    }
 	} else {
+	    divid = divid.replace('JS9', JS9.DEFID);
 	    instance.display = JS9.lookupDisplay(divid);
 	    did = instance.display.id;
 	}
@@ -28559,6 +28560,8 @@ $(document).ready(() => {
     });
     // init JS9 (unless explicitly specified not to)
     if( $('div[data-js9init="false"]').length === 0 ){
+	// trigger JS9:Start so that DEFID can be set outside if needed
+	$(document).trigger("JS9:Start");
 	JS9.init();
     }
 });
