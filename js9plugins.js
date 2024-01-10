@@ -7340,7 +7340,7 @@ JS9.Menubar.createMenus = function(){
 		name: "display ...",
 		items: {
 		    dispstitle: {
-			name: "display:",
+			name: "display id: " + JS9.DEFID,
 			disabled: true
 		    }
 		}
