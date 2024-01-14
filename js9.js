@@ -33,6 +33,7 @@ JS9.ABOUT = `JS9 ${JS9.VERSION}: astronomical image display everywhere\nEric Man
 
 // internal defaults (not usually changed by users)
 JS9.DEFID = "JS9";		// default JS9 display id
+JS9.SOCKBASE = document.location.pathname.split('js9')[0].replace(/^\//, "") + 'js9Helper/socket.io';   // socket.io path in jupyter mode
 JS9.WIDTH = 512;	        // width of js9 canvas
 JS9.HEIGHT = 512;		// height of js9 canvas
 JS9.ANON = "Anonymous";		// name to use for images with no name
@@ -11696,10 +11697,12 @@ JS9.Helper.prototype.connect = function(type){
 	    JS9.error("port missing for helper");
 	}
 	if (JS9.socketioOpts.hasOwnProperty('jupyter') && JS9.socketioOpts.jupyter === "true"){
+	    sockbase = JS9.SOCKBASE;
+	    // update path, since it needs to be passed to socketio.connect()
+	    JS9.socketioOpts.path = '/' + sockbase;
 	    if( JS9.DEBUG ){
-		JS9.log(`JS9 helper: Using Jupyter mode`); 
+            JS9.log('JS9: Using Jupyter mode with sockbase: ', sockbase); 
 	    }
-	    sockbase = JS9.socketioOpts.path.substring(1);
 	} else {
 	    // ignore port on url, add our own
 	    this.url = `${this.url.replace(/:[0-9][0-9]*$/, "")}:${JS9.globalOpts.helperPort}`;

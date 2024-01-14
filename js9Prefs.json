@@ -1,6 +1,7 @@
 {
   "globalOpts": {"helperType":	     "nodejs",
   		 "helperPort":       2718, 
+		 "remoteMsgs":       2,
 		 "helperCGI":        "./cgi-bin/js9/js9Helper.cgi",
 		 "loadProxy":	     true,
 		 "workDir":	     "./tmp",
