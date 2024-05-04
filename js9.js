@@ -21804,6 +21804,8 @@ JS9.lookupDisplay = function(id, mustExist){
 	// try removing id suffix to get base id
 	if( typeof id === "string" ){
 	    id = id.replace(regexp,"");
+        // set the correct id so the display is found
+        id = id.replace("JS9", JS9.DEFID);
 	    for(i=0; i<JS9.displays.length; i++){
 		if( (id === JS9.displays[i])     ||
 		    (id === JS9.displays[i].id)  ||
@@ -24519,7 +24521,6 @@ JS9.instantiatePlugin = function(el, plugin, winhandle, args){
 		JS9.error(`${plugin.name} is not dynamically selectable`);
 	    }
 	} else {
-	    divid = divid.replace('JS9', JS9.DEFID);
 	    instance.display = JS9.lookupDisplay(divid);
 	    did = instance.display.id;
 	}

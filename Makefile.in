@@ -101,7 +101,7 @@ BEDIRS =	node_modules analysis-plugins analysis-wrappers
 
 OTHERDIRS =	astroem src scripts build demos tests sao
 
-WEBFILES =	js9.js js9.min.js js9worker.js \
+WEBFILES =	js9.js js9.min.js js9worker.js js9plugins.js \
 		js9support.js js9support.min.js js9support.css js9plugins.min.js \
 		js9support.txt js9.css $(ALLIN1).js $(ALLIN1).css \
 		js9Msg.js js9PostMessage.js js9Helper.js js9Regions.js \
